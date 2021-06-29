@@ -1,0 +1,27 @@
+<h2>Order Details</h2>
+<form *ngIf="forms" [formGroup]="forms">
+  <div *ngIf="order">
+    <label for="name">Restaurant name: </label>
+    <input id="name" formControlName="name">
+  </div>
+  <div>
+    <label for="person">Person who ordered:  </label>
+    <input id="person" formControlName="personWhoOrdered">
+  </div>
+  <div>
+    <label for="date">Date ordered: </label>
+    <input id="date" formControlName="dateOrdered" type="date">
+  </div>
+  <div>
+    <label for="dishes">Dishes ordered: </label>
+    <input id="dishes" formControlName="dishes">
+  </div>
+  <div>
+    <label for="cost">Cost: </label>
+    <input id="cost" formControlName="cost" type="number">
+  </div>
+  <button type="submit" (click)="submit(order.id)" [disabled]="forms.invalid">Update Order</button>
+  <button type="delete" (click)="delete(order.id); goBack()">Delete Order</button>
+</form>
+
+<button (click)="goBack()">Go Back</button>

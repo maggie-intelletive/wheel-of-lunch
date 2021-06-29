@@ -1,0 +1,19 @@
+<h2>Restaurant Details</h2>
+<form *ngIf="forms" [formGroup]="forms">
+  <div *ngIf="restaurant">
+    <label for="name">Restaurant Name: </label>
+    <input id="name" formControlName="name">
+  </div>
+  <div>
+    <label for="rating">Restaurant Rating: </label>
+    <input id="rating" formControlName="rating" type="number">
+  </div>
+  <div>
+    <label for="type">Restaurant Type: </label>
+    <input id="type" formControlName="type">
+  </div>
+  <button type="submit" (click)="submit(restaurant.id)" [disabled]="forms.invalid">Update Restaurant</button>
+  <button type="delete" (click)="delete(restaurant.id)">Delete Restaurant</button>
+</form>
+
+<button (click)="goBack()">Go Back</button>

@@ -1,0 +1,33 @@
+<h2>My Restaurants</h2>
+<ul class="restaurants">
+  <li *ngFor="let res of restuarants" >
+    <a routerLink="/restaurant/{{res.id}}">
+      {{res.name}}
+    </a>
+  </li>
+</ul>
+<div>
+  <h4>Add a Restaurant</h4>
+  <label for="new-res">Restaurant name: </label>
+  <input id="new-res" #resName />
+</div>
+<div>
+  <label for="new-rating">Restaurant rating: </label>
+  <input id="new-rating" #resRate type="number"/>
+</div>
+<div>
+  <label for="new-type">Restaurant type: </label>
+  <input id="new-type" #resType />
+</div>
+<div>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button class="add-button" (click)="add(resName.value, resRate.valueAsNumber, resType.value); resName.value='';
+  resType.value=''; resRate.valueAsNumber=0.0">
+    Add
+  </button>
+</div>
+
+
+
+
+

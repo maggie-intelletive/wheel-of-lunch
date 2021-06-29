@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'wheel-of-lunch-angular';
+  title = 'Wheel of Lunch';
 }

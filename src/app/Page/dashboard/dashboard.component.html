@@ -1,0 +1,24 @@
+<!--<h2>Top Restaurants</h2>-->
+<!--<div class="res-menu">-->
+<!--  <a *ngFor="let res of restaurants" routerLink="/restaurant/{{res.id}}">-->
+<!--    {{res.name}}-->
+<!--  </a>-->
+<!--</div>-->
+<div>
+  <ngx-wheel *ngIf="items.length"
+    [width]="800"
+    [height]="800"
+    [spinDuration]="8"
+    [disableSpinOnClick]='false'
+    [items]="items"
+    [innerRadius]="50"
+    [spinAmount]="10"
+    pointerStrokeColor="red"
+    pointerFillColor="purple"
+    [idToLandOn]="idToLandOn"
+    (onSpinStart)="before()"
+    (onSpinComplete)="after()"
+  >
+  </ngx-wheel>
+<button (click)="spin()">Spin!</button>
+</div>

@@ -1,0 +1,76 @@
+<h2>My Orders</h2>
+<!--<ul class="orders">-->
+<!--  <li *ngFor="let ord of orders$ | async" >-->
+<!--    <a routerLink="/order/{{ord.id}}">-->
+<!--      {{ord.personWhoOrdered}} on {{ord.dateOrdered | dateOrdered: 'shortDate'}} from {{ord.resDto.name}}-->
+<!--    </a>-->
+<!--  </li>-->
+<!--</ul>-->
+
+  <div class="row">
+    <div class="col-3" style="height: 50px; border: 2px solid black; background-color: honeydew"
+         *ngFor="let ord of orders$ | async ">
+      <a routerLink="/order/{{ord.id}}">
+        {{ord.personWhoOrdered}} on {{ord.dateOrdered | date: 'shortDate'}} from {{ord.resDto.name}}
+      </a>
+    </div>
+  </div>
+
+
+<h3>Add an Order</h3>
+<div>
+  <label for="new-ord">Restaurant name: </label>
+  <select name="new-ord" id="new-ord" #resId required>
+    <option *ngFor="let res of restaurants$ | async" value="{{res.id}}">
+      {{res.name}}
+    </option>
+  </select>
+</div>
+<div>
+  <label for="ord-date">Date Ordered:</label>
+  <input type="date" id="ord-date" name="ord-date" #ordDate required/>
+</div>
+<div>
+  <label for="new-person">Person who ordered: </label>
+  <input id="new-person" #ordPerson required/>
+</div>
+<div>
+  <label for="new-cost">Cost: </label>
+  <input id="new-cost" #ordCost type="number"/>
+</div>
+<div>
+  <label for="new-dishes">Dishes ordered: </label>
+  <input id="new-dishes" #ordDishes/>
+</div>
+
+<div>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button class="add-button"
+          (click)="add(+resId.value, ordPerson.value, ordDate.valueAsDate, ordCost.valueAsNumber, ordDishes.value);
+                   resId.value=''; ordDate.value=''; ordPerson.value=''; ordCost.value=''; ordDishes.value=''">
+    Add Order
+  </button>
+</div>
+<br>
+<div>
+  <h3>Delete an Order </h3>
+  <label for="delete-ord">Restaurant name: </label>
+  <input id="delete-ord" #delResName />
+</div>
+<div>
+  <label for="delete-dateOrdered">Date Ordered: </label>
+  <input id="delete-dateOrdered" type="dateOrdered" #delOrdDate />
+</div>
+<div>
+  <label for="delete-personWhoOrdered">Person Who Ordered: </label>
+  <input id="delete-personWhoOrdered" #delOrdPerson />
+</div>
+
+
+<!--<ul class="heroes">-->
+<!--  <li *ngFor="let res of restaurants$ | async" >-->
+<!--    {{res.name}}-->
+<!--  </li>-->
+<!--</ul>-->
+
+
